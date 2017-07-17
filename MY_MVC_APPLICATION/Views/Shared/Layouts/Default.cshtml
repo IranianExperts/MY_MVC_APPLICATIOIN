@@ -5,12 +5,15 @@
 	<meta name="viewport" content="width=device-width" />
 	<title>@ViewBag.Title</title>
 
-	<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-	<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+	@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+		<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />*@
 
-	<script src="~/Scripts/jquery-3.1.1.min.js"></script>
-	<script src="~/Scripts/bootstrap.min.js"></script>
-	<script src="~/Scripts/angular.min.js"></script>
+	<link href="@(Links.Content.bootstrap_min_css)" rel="stylesheet" />
+	<link href="@(Links.Content.bootstrap_theme_min_css)" rel="stylesheet" />
+
+	<script src="@(Links.Scripts.jquery_3_1_1_min_js)"></script>
+	<script src="@(Links.Scripts.bootstrap_min_js)"></script>
+	<script src="@(Links.Scripts.angular_min_js)"></script>
 </head>
 <body>
 	<div class="container">

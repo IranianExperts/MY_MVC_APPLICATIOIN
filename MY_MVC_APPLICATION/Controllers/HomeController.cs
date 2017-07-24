@@ -9,6 +9,7 @@ namespace MY_MVC_APPLICATION.Controllers
 		{
 		}
 
+		[System.Web.Mvc.HttpGet]
 		public virtual System.Web.Mvc.ViewResult Index()
 		{
 			//Models.DatabaseContext oDatabaseContext = null;
@@ -43,6 +44,7 @@ namespace MY_MVC_APPLICATION.Controllers
 			return (View());
 		}
 
+		[System.Web.Mvc.HttpGet]
 		public virtual System.Web.Mvc.ViewResult About()
 		{
 			return (View());

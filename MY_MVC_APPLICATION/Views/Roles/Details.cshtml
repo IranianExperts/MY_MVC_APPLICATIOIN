@@ -1,34 +1,41 @@
 ﻿@model Models.Role
 
 @{
-    ViewBag.Title = "Details";
+	string strTitle = "Details of Role";
+
+	ViewBag.Title = strTitle;
 }
 
-<h2>Details</h2>
+<h2>
+	@strTitle
+</h2>
 
-<div>
-    <h4>Role</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </dt>
+<hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.IsActive)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-    </dl>
+<div class="row">
+	<div class="col-sm-3">
+		@Html.DisplayNameFor(model => model.IsActive)
+	</div>
+	<div class="col-sm-9">
+		@Html.DisplayFor(model => model.IsActive)
+	</div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="row">
+	<div class="col-sm-3">
+		@Html.DisplayNameFor(model => model.Name)
+	</div>
+	<div class="col-sm-9">
+		@Html.DisplayFor(model => model.Name)
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		@Html.ActionLink("Back to List", MVC.Roles.Index())
+		|
+		@Html.ActionLink("Edit", MVC.Roles.Edit(Model.Id))
+		|
+		@Html.ActionLink("Delete", MVC.Roles.Delete(Model.Id))
+	</div>
+</div>

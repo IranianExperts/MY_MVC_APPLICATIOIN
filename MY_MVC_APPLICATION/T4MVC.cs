@@ -28,6 +28,7 @@ using T4MVC;
 public static partial class MVC
 {
     public static MY_MVC_APPLICATION.Controllers.HomeController Home = new MY_MVC_APPLICATION.Controllers.T4MVC_HomeController();
+    public static MY_MVC_APPLICATION.Controllers.RolesController Roles = new MY_MVC_APPLICATION.Controllers.T4MVC_RolesController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 
@@ -54,6 +55,21 @@ internal partial class T4MVC_System_Web_Mvc_ViewResult : System.Web.Mvc.ViewResu
     {
         this.InitMVCT4Result(area, controller, action, protocol);
     }
+    
+    public string Controller { get; set; }
+    public string Action { get; set; }
+    public string Protocol { get; set; }
+    public RouteValueDictionary RouteValueDictionary { get; set; }
+}
+[GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+internal partial class T4MVC_System_Web_Mvc_ActionResult : System.Web.Mvc.ActionResult, IT4MVCActionResult
+{
+    public T4MVC_System_Web_Mvc_ActionResult(string area, string controller, string action, string protocol = null): base()
+    {
+        this.InitMVCT4Result(area, controller, action, protocol);
+    }
+     
+    public override void ExecuteResult(System.Web.Mvc.ControllerContext context) { }
     
     public string Controller { get; set; }
     public string Action { get; set; }

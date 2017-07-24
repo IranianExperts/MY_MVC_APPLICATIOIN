@@ -1,128 +1,227 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Linq;
 using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using Models;
 
 namespace MY_MVC_APPLICATION.Controllers
 {
-    public class RolesController : Controller
-    {
-        private DatabaseContext db = new DatabaseContext();
+	public partial class RolesController : Infrastructure.BaseController
+	{
+		public RolesController() : base()
+		{
+		}
 
-        // GET: Roles
-        public ActionResult Index()
-        {
-            return View(db.Roles.ToList());
-        }
+		[System.Web.Mvc.HttpGet]
+		public virtual System.Web.Mvc.ViewResult Index()
+		{
+			var varRoles =
+				MyDatabaseContext.Roles
+				.OrderBy(current => current.Name)
+				.ToList()
+				;
 
-        // GET: Roles/Details/5
-        public ActionResult Details(Guid? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Role role = db.Roles.Find(id);
-            if (role == null)
-            {
-                return HttpNotFound();
-            }
-            return View(role);
-        }
+			return (View(model: varRoles));
+		}
 
-        // GET: Roles/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+		[System.Web.Mvc.HttpGet]
+		//public virtual System.Web.Mvc.ActionResult Details(System.Guid id)
+		public virtual System.Web.Mvc.ActionResult Details(System.Guid? id)
+		{
+			//if (id == null)
+			if (id.HasValue == false)
+			{
+				return (new System.Web.Mvc
+					.HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest));
+			}
 
-        // POST: Roles/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,IsActive,Name")] Role role)
-        {
-            if (ModelState.IsValid)
-            {
-                role.Id = Guid.NewGuid();
-                db.Roles.Add(role);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+			//Models.Role oRole =
+			//	MyDatabaseContext.Roles
+			//	.Find(id);
 
-            return View(role);
-        }
+			//Models.Role oRole =
+			//	MyDatabaseContext.Roles
+			//	.Where(current => current.Id == id.Value)
+			//	.First();
 
-        // GET: Roles/Edit/5
-        public ActionResult Edit(Guid? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Role role = db.Roles.Find(id);
-            if (role == null)
-            {
-                return HttpNotFound();
-            }
-            return View(role);
-        }
+			Models.Role oRole =
+				MyDatabaseContext.Roles
+				.Where(current => current.Id == id.Value)
+				.FirstOrDefault();
 
-        // POST: Roles/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,IsActive,Name")] Role role)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(role).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(role);
-        }
+			if (oRole == null)
+			{
+				return (HttpNotFound());
+			}
 
-        // GET: Roles/Delete/5
-        public ActionResult Delete(Guid? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Role role = db.Roles.Find(id);
-            if (role == null)
-            {
-                return HttpNotFound();
-            }
-            return View(role);
-        }
+			return (View(model: oRole));
+		}
 
-        // POST: Roles/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid id)
-        {
-            Role role = db.Roles.Find(id);
-            db.Roles.Remove(role);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+		[System.Web.Mvc.HttpGet]
+		//public virtual System.Web.Mvc.ActionResult Create()
+		public virtual System.Web.Mvc.ViewResult Create()
+		{
+			//return (View());
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-    }
+			// **************************************************
+			Models.Role oDefaultRole = new Models.Role();
+
+			oDefaultRole.IsActive = true;
+			// **************************************************
+
+			return (View(model: oDefaultRole));
+		}
+
+		//[System.Web.Mvc.HttpPost]
+		//[System.Web.Mvc.ValidateAntiForgeryToken]
+		//public virtual System.Web.Mvc.ActionResult Create(System.Web.Mvc.FormCollection formCollection)
+		//{
+		//	Models.Role oRole = new Models.Role();
+
+		//	string strIsActive = formCollection["IsActive"];
+		//	bool blnIsActive = false;
+		//	if(string.Compare(strIsActive, "True", ignoreCase: true) == 0)
+		//	{
+		//		blnIsActive = true;
+		//	}
+
+		//	oRole.IsActive = blnIsActive;
+		//}
+
+		//[System.Web.Mvc.HttpPost]
+		//[System.Web.Mvc.ValidateAntiForgeryToken]
+		//public virtual System.Web.Mvc.ActionResult Create(Models.Role role)
+		//{
+		//}
+
+		//[System.Web.Mvc.HttpPost]
+		//[System.Web.Mvc.ValidateAntiForgeryToken]
+		//public virtual System.Web.Mvc.ActionResult Create
+		//	([System.Web.Mvc.Bind(Include = "IsActive,Name")] Models.Role role)
+		//{
+		//}
+
+		//[System.Web.Mvc.HttpPost]
+		//[System.Web.Mvc.ValidateAntiForgeryToken]
+		//public virtual System.Web.Mvc.ActionResult Create
+		//	([System.Web.Mvc.Bind(Exclude = "Id")] Models.Role role)
+		//{
+		//}
+
+		[System.Web.Mvc.HttpPost]
+		[System.Web.Mvc.ValidateAntiForgeryToken]
+		public virtual System.Web.Mvc.ActionResult Create
+			([System.Web.Mvc.Bind(Exclude = "Id")] Models.Role role)
+		{
+			if (ModelState.IsValid)
+			{
+				//role.Id = Guid.NewGuid();
+
+				MyDatabaseContext.Roles.Add(role);
+
+				MyDatabaseContext.SaveChanges();
+
+				return (RedirectToAction(MVC.Roles.Index()));
+			}
+
+			//return (View());
+			return (View(model: role));
+		}
+
+		[System.Web.Mvc.HttpGet]
+		public virtual System.Web.Mvc.ActionResult Edit(System.Guid? id)
+		{
+			if (id.HasValue == false)
+			{
+				return (new System.Web.Mvc
+					.HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest));
+			}
+
+			Models.Role oRole =
+				MyDatabaseContext.Roles
+				.Where(current => current.Id == id.Value)
+				.FirstOrDefault();
+
+			if (oRole == null)
+			{
+				return (HttpNotFound());
+			}
+
+			return (View(model: oRole));
+		}
+
+		[System.Web.Mvc.HttpPost]
+		[System.Web.Mvc.ValidateAntiForgeryToken]
+		public virtual System.Web.Mvc.ActionResult Edit
+			([System.Web.Mvc.Bind(Include = "Id,IsActive,Name")] Models.Role role)
+		{
+			Models.Role oOriginalRole =
+				MyDatabaseContext.Roles
+				.Where(current => current.Id == role.Id)
+				.FirstOrDefault();
+
+			if (oOriginalRole == null)
+			{
+				return (HttpNotFound());
+			}
+
+			if (ModelState.IsValid)
+			{
+				oOriginalRole.Name = role.Name;
+				oOriginalRole.IsActive = role.IsActive;
+
+				MyDatabaseContext.SaveChanges();
+
+				return (RedirectToAction(MVC.Roles.Index()));
+			}
+
+			return (View(model: role));
+		}
+
+		public virtual System.Web.Mvc.ActionResult Delete(System.Guid? id)
+		{
+			if (id.HasValue == false)
+			{
+				return (new System.Web.Mvc
+					.HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest));
+			}
+
+			Models.Role oRole =
+				MyDatabaseContext.Roles
+				.Where(current => current.Id == id.Value)
+				.FirstOrDefault();
+
+			if (oRole == null)
+			{
+				return (HttpNotFound());
+			}
+
+			return (View(model: oRole));
+		}
+
+		[System.Web.Mvc.HttpPost]
+		[System.Web.Mvc.ActionName("Delete")]
+		[System.Web.Mvc.ValidateAntiForgeryToken]
+		public virtual System.Web.Mvc.ActionResult DeleteConfirmed(System.Guid? id)
+		{
+			if (id.HasValue == false)
+			{
+				return (new System.Web.Mvc
+					.HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest));
+			}
+
+			Models.Role oRole =
+				MyDatabaseContext.Roles
+				.Where(current => current.Id == id.Value)
+				.FirstOrDefault();
+
+			if (oRole == null)
+			{
+				return (HttpNotFound());
+			}
+
+			MyDatabaseContext.Roles.Remove(oRole);
+
+			MyDatabaseContext.SaveChanges();
+
+			return (RedirectToAction(MVC.Roles.Index()));
+		}
+	}
 }

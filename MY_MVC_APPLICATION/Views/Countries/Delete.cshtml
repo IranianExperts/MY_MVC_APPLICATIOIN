@@ -1,7 +1,7 @@
-﻿@model Models.Role
+﻿@model Models.Country
 
 @{
-	string strTitle = "Delete Role";
+	string strTitle = "Delete Country";
 
 	ViewBag.Title = strTitle;
 }
@@ -45,10 +45,10 @@
 
 <div class="row">
 	<div class="col-xs-12">
-		@Html.ActionLink("Back to List", MVC.Roles.Index())
+		@Html.ActionLink("Back to List", MVC.Countries.Index())
 		|
-		@Html.ActionLink("Details", MVC.Roles.Details(Model.Id))
+		@Html.ActionLink("Details", MVC.Countries.Details(Model.Id))
 		|
-		@Html.ActionLink("Edit", MVC.Roles.Edit(Model.Id))
+		@Html.ActionLink("Edit", MVC.Countries.Edit(Model.Id))
 	</div>
 </div>

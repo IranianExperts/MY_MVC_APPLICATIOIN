@@ -27,8 +27,10 @@ using T4MVC;
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public static partial class MVC
 {
+    public static MY_MVC_APPLICATION.Controllers.CountriesController Countries = new MY_MVC_APPLICATION.Controllers.T4MVC_CountriesController();
     public static MY_MVC_APPLICATION.Controllers.HomeController Home = new MY_MVC_APPLICATION.Controllers.T4MVC_HomeController();
     public static MY_MVC_APPLICATION.Controllers.RolesController Roles = new MY_MVC_APPLICATION.Controllers.T4MVC_RolesController();
+    public static MY_MVC_APPLICATION.Controllers.UsersController Users = new MY_MVC_APPLICATION.Controllers.T4MVC_UsersController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 

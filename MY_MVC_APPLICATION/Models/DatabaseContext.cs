@@ -24,5 +24,7 @@
 		public System.Data.Entity.DbSet<Role> Roles { get; set; }
 
 		public System.Data.Entity.DbSet<User> Users { get; set; }
+
+		public System.Data.Entity.DbSet<Country> Countries { get; set; }
 	}
 }

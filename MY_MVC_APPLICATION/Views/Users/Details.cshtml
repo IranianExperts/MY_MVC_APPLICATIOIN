@@ -1,0 +1,78 @@
+﻿@model Models.User
+
+@{
+	string strTitle = "User Details";
+
+	ViewBag.Title = strTitle;
+}
+
+<h2>
+	@strTitle
+</h2>
+
+<hr />
+
+<div class="row">
+	<div class="col-sm-3">
+		@Html.DisplayNameFor(model => model.IsActive)
+	</div>
+	<div class="col-sm-9">
+		@Html.DisplayFor(model => model.IsActive)
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-3">
+		@Html.DisplayNameFor(model => model.FullName)
+	</div>
+	<div class="col-sm-9">
+		@Html.DisplayFor(model => model.FullName)
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-3">
+		@Html.DisplayNameFor(model => model.Username)
+	</div>
+	<div class="col-sm-9">
+		@Html.DisplayFor(model => model.Username)
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-3">
+		@Html.DisplayNameFor(model => model.EmailAddress)
+	</div>
+	<div class="col-sm-9">
+		@Html.DisplayFor(model => model.EmailAddress)
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-3">
+		@*@Html.DisplayNameFor(model => model.Role.Name)*@
+		@Html.DisplayNameFor(model => model.Role)
+	</div>
+	<div class="col-sm-9">
+		@Html.DisplayFor(model => model.Role.Name)
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-3">
+		@Html.DisplayNameFor(model => model.Description)
+	</div>
+	<div class="col-sm-9">
+		@Html.DisplayFor(model => model.Description)
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		@Html.ActionLink("Edit", MVC.Users.Edit(Model.Id))
+		|
+		@Html.ActionLink("Delete", MVC.Users.Delete(Model.Id))
+		|
+		@Html.ActionLink("Back to List", MVC.Users.Index())
+	</div>
+</div>

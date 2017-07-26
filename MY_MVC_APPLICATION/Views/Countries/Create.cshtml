@@ -1,7 +1,7 @@
-﻿@model Models.Role
+﻿@model Models.Country
 
 @{
-	string strTitle = "Create Role";
+	string strTitle = "Create Country";
 
 	ViewBag.Title = strTitle;
 }
@@ -40,7 +40,6 @@
 
 		<div class="form-group">
 			<div class="col-sm-offset-3 col-sm-9">
-				@*<input type="submit" value="Create" class="btn btn-default" />*@
 				<button type="submit" class="btn btn-primary" accesskey="C">(C)reate</button>
 				<button type="reset" class="btn btn-default" accesskey="R">(R)eset</button>
 			</div>
@@ -51,6 +50,6 @@
 
 <div class="row">
 	<div class="col-xs-12">
-		@Html.ActionLink("Back to List", MVC.Roles.Index())
+		@Html.ActionLink("Back to List", MVC.Countries.Index())
 	</div>
 </div>

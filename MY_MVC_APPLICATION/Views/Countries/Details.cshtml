@@ -1,7 +1,7 @@
-﻿@model Models.Role
+﻿@model Models.Country
 
 @{
-	string strTitle = "Delete Role";
+	string strTitle = "Details of Country";
 
 	ViewBag.Title = strTitle;
 }
@@ -11,10 +11,6 @@
 </h2>
 
 <hr />
-
-<h3>
-	Are you sure you want to delete this?
-</h3>
 
 <div class="row">
 	<div class="col-sm-3">
@@ -34,21 +30,12 @@
 	</div>
 </div>
 
-@using (Html.BeginForm())
-{
-	@Html.AntiForgeryToken()
-
-	<div class="form-actions no-color">
-		<button type="submit" class="btn btn-danger">Delete</button>
-	</div>
-}
-
 <div class="row">
 	<div class="col-xs-12">
-		@Html.ActionLink("Back to List", MVC.Roles.Index())
+		@Html.ActionLink("Back to List", MVC.Countries.Index())
 		|
-		@Html.ActionLink("Details", MVC.Roles.Details(Model.Id))
+		@Html.ActionLink("Edit", MVC.Countries.Edit(Model.Id))
 		|
-		@Html.ActionLink("Edit", MVC.Roles.Edit(Model.Id))
+		@Html.ActionLink("Delete", MVC.Countries.Delete(Model.Id))
 	</div>
 </div>

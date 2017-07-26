@@ -9,10 +9,14 @@
 		// **********
 		// **********
 		// **********
+		[System.ComponentModel.DataAnnotations.Display
+			(Name = "Role")]
 		public virtual Role Role { get; set; }
 		// **********
 
 		// **********
+		[System.ComponentModel.DataAnnotations.Display
+			(Name = "Role")]
 		public System.Guid RoleId { get; set; }
 		// **********
 		// **********
@@ -25,8 +29,16 @@
 		// **********
 
 		// **********
+		//[System.ComponentModel.DataAnnotations.Required
+		//	(AllowEmptyStrings = false)]
+
+		//[System.ComponentModel.DataAnnotations.Required
+		//	(AllowEmptyStrings = false,
+		//	ErrorMessage ="You did not specify Username!")]
+
 		[System.ComponentModel.DataAnnotations.Required
-			(AllowEmptyStrings = false)]
+			(AllowEmptyStrings = false,
+			ErrorMessage = "You did not specify {0}!")]
 
 		[System.ComponentModel.DataAnnotations.StringLength
 			(maximumLength: 20, MinimumLength = 6)]
@@ -41,7 +53,7 @@
 			(AllowEmptyStrings = false)]
 
 		[System.ComponentModel.DataAnnotations.StringLength
-			(maximumLength: 40, MinimumLength = 40)]
+			(maximumLength: 40, MinimumLength = 8)]
 
 		[System.ComponentModel.DataAnnotations.DataType
 			(System.ComponentModel.DataAnnotations.DataType.Password)]
@@ -61,6 +73,24 @@
 		[System.ComponentModel.DataAnnotations.Schema.Index
 			(IsUnique = false)]
 		public string FullName { get; set; }
+		// **********
+
+		// **********
+		[System.ComponentModel.DataAnnotations.Display
+			(Name = "Email Address")]
+
+		[System.ComponentModel.DataAnnotations.Required
+			(AllowEmptyStrings = false)]
+
+		[System.ComponentModel.DataAnnotations.StringLength
+			(maximumLength: 250, MinimumLength = 5)]
+
+		[System.ComponentModel.DataAnnotations.Schema.Index
+			(IsUnique = true)]
+
+		[System.ComponentModel.DataAnnotations.EmailAddress()]
+		//[System.ComponentModel.DataAnnotations.RegularExpression(pattern:"")]
+		public string EmailAddress { get; set; }
 		// **********
 
 		// **********

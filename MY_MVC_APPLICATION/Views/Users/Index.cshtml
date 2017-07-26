@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Models.User>
+
+@{
+	string strTitle = "Users List";
+
+	ViewBag.Title = strTitle;
+}
+
+<h2>
+	@strTitle
+</h2>
+
+<div class="row">
+	<div class="col-xs-12">
+		@Html.ActionLink("Create New User", MVC.Users.Create())
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 table-responsive">
+		<table class="table table-bordered table-condensed table-striped table-hover">
+			<tr>
+				<th></th>
+				<th>
+					@Html.DisplayNameFor(model => model.IsActive)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.FullName)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Username)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.EmailAddress)
+				</th>
+				<th>
+					@*@Html.DisplayNameFor(model => model.Role.Name)*@
+					@Html.DisplayNameFor(model => model.Role)
+				</th>
+			</tr>
+
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.ActionLink("Details", MVC.Users.Details(item.Id))
+						|
+						@Html.ActionLink("Edit", MVC.Users.Edit(item.Id))
+						|
+						@Html.ActionLink("Delete", MVC.Users.Delete(item.Id))
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.IsActive)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.FullName)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Username)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.EmailAddress)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Role.Name)
+					</td>
+				</tr>
+			}
+
+		</table>
+	</div>
+</div>

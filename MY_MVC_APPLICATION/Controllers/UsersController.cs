@@ -207,6 +207,36 @@ namespace MY_MVC_APPLICATION.Controllers
 				return (HttpNotFound());
 			}
 
+			// **************************************************
+			Models.User oUser =
+				MyDatabaseContext.Users
+				.Where(current => current.Id != oOriginalUser.Id)
+				.Where(current => string.Compare(current.Username, user.Username, true) == 0)
+				.FirstOrDefault();
+
+			if (oUser != null)
+			{
+				ModelState.AddModelError
+					(key: "Username",
+					errorMessage: "Username is already exist! Please choose another one...");
+			}
+			// **************************************************
+
+			// **************************************************
+			oUser =
+				MyDatabaseContext.Users
+				.Where(current => current.Id != oOriginalUser.Id)
+				.Where(current => string.Compare(current.EmailAddress, user.EmailAddress, true) == 0)
+				.FirstOrDefault();
+
+			if (oUser != null)
+			{
+				ModelState.AddModelError
+					(key: "EmailAddress",
+					errorMessage: "EmailAddress is already exist! Please choose another one...");
+			}
+			// **************************************************
+
 			if (ModelState.IsValid)
 			{
 				oOriginalUser.RoleId = user.RoleId;

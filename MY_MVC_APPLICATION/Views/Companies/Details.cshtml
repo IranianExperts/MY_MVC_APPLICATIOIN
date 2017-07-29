@@ -1,0 +1,41 @@
+﻿@model Models.Company
+
+@{
+	string strTitle = "Details of Company";
+
+	ViewBag.Title = strTitle;
+}
+
+<h2>
+	@strTitle
+</h2>
+
+<hr />
+
+<div class="row">
+	<div class="col-sm-3">
+		@Html.DisplayNameFor(model => model.IsActive)
+	</div>
+	<div class="col-sm-9">
+		@Html.DisplayFor(model => model.IsActive)
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-3">
+		@Html.DisplayNameFor(model => model.Name)
+	</div>
+	<div class="col-sm-9">
+		@Html.DisplayFor(model => model.Name)
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		@Html.ActionLink("Back to List", MVC.Companies.Index())
+		|
+		@Html.ActionLink("Edit", MVC.Companies.Edit(Model.Id))
+		|
+		@Html.ActionLink("Delete", MVC.Companies.Delete(Model.Id))
+	</div>
+</div>

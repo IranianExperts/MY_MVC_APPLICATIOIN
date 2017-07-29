@@ -26,5 +26,7 @@
 		public System.Data.Entity.DbSet<User> Users { get; set; }
 
 		public System.Data.Entity.DbSet<Country> Countries { get; set; }
-	}
+
+        public System.Data.Entity.DbSet<Company> Companies { get; set; }
+    }
 }

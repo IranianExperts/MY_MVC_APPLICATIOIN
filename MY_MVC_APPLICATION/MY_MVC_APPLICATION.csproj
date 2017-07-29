@@ -902,6 +902,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="CompaniesController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
@@ -918,6 +922,7 @@
     <Compile Include="Infrastructure\BaseController.cs" />
     <Compile Include="Infrastructure\SomeClass.cs" />
     <Compile Include="Models\BaseEntity.cs" />
+    <Compile Include="Models\Company.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Role.cs" />
@@ -958,6 +963,11 @@
     <Content Include="Views\Countries\Details.cshtml" />
     <Content Include="Views\Countries\Edit.cshtml" />
     <Content Include="Views\Countries\Index.cshtml" />
+    <Content Include="Views\Companies\Create.cshtml" />
+    <Content Include="Views\Companies\Delete.cshtml" />
+    <Content Include="Views\Companies\Details.cshtml" />
+    <Content Include="Views\Companies\Edit.cshtml" />
+    <Content Include="Views\Companies\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
